@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 import "@/assets/styles/globals.css";
-import { ThemeProvider } from "@/components/shared/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 
 const roboto = Roboto({

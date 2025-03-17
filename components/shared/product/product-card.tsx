@@ -3,9 +3,10 @@ import Link from "next/link";
 
 import ProductPrice from "./product-price";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Product } from "@/types";
 
 type Props = {
-  product: any;
+  product: Product;
 };
 
 const ProductCard = ({ product }: Props) => {
@@ -28,6 +29,33 @@ const ProductCard = ({ product }: Props) => {
         <Link href={`product/${product.slug}`}>
           <h2 className="text-sm font-medium">{product.name}</h2>
         </Link>
+
+        {/* display colour */}
+        <div className="item-center flex gap-2">
+          <p className="text-md"> Color:</p>
+          <div className="flex gap-1">
+            {product.colors?.map((color: string, index: number) => (
+              <div
+                key={index}
+                className="h-5 w-5 rounded-full border"
+                style={{ backgroundColor: color }}
+                title={color}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* display size */}
+        <div className="item-center flex gap-2">
+          <p className="text-md"> Size:</p>
+          <div className="flex gap-1">
+            {product.sizes?.map((size: string, index: number) => (
+              <div key={index} className="rounded-md border px-2 py-1 text-xs font-medium">
+                {size}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="flex-between gap-4">
           <p>{product.rating} Stars</p>

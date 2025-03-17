@@ -1,9 +1,7 @@
-import { ShoppingCart, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ThemeToggle } from "./theme-toggle";
-import { Button } from "@/components/ui/button";
+import Menu from "./menu";
 import { APP_NAME } from "@/lib/constants";
 
 const AppHeader = () => {
@@ -22,22 +20,7 @@ const AppHeader = () => {
           </Link>
           <span className="ml-3 hidden text-2xl font-bold lg:block">{APP_NAME}</span>
         </div>
-        {/* <Menu/> */}
-        <div className="space-x-2">
-          <ThemeToggle />
-
-          <Button variant={"ghost"} asChild>
-            <Link href="/cart">
-              <ShoppingCart /> Cart
-            </Link>
-          </Button>
-
-          <Button asChild>
-            <Link href="/sign-in">
-              <UserIcon /> Sign In
-            </Link>
-          </Button>
-        </div>
+        <Menu />
       </div>
     </header>
   );

@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 // import { ErrorWrapper } from "./error-wrapper";
 import "@/assets/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 
 const roboto = Roboto({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps) {
         >
           {/* <ErrorWrapper> */}
           {children}
+          <Toaster richColors />
           {/* </ErrorWrapper> */}
         </ThemeProvider>
       </body>

@@ -3,6 +3,7 @@
 import { hashSync } from "bcrypt-ts-edge";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 
+import { handleError } from "../utils";
 import { signInFormSchema, signUpFormSchema } from "../validator";
 
 import { signIn, signOut } from "@/auth";
@@ -58,8 +59,7 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
     if (isRedirectError(error)) {
       throw error;
     }
-    // return { success: false, message: handleError(error) }
-    return { success: false, message: "User registration failed!" };
+    return { success: false, message: handleError(error) };
   }
 }
 

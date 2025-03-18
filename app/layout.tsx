@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
+import { ErrorWrapper } from "./error-wrapper";
 import "@/assets/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
@@ -33,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ErrorWrapper>{children}</ErrorWrapper>
         </ThemeProvider>
       </body>
     </html>

@@ -2,6 +2,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compareSync } from "bcrypt-ts-edge";
 import NextAuth, { type NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { NextResponse } from "next/server";
 
 import { prisma } from "@/db/prisma";
 
@@ -69,6 +70,30 @@ export const config = {
       }
 
       return session;
+    },
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async authorized({ request, auth }) {
+      // Check session cart cookie
+      if (!request.cookies.get("sessionCartId")) {
+        const sessionCartId = crypto.randomUUID();
+
+        // Clone header
+        const newRequestHeader = new Headers(request.headers);
+
+        // Create new response and new cookie with session cart id
+        const response = NextResponse.next({
+          request: {
+            headers: newRequestHeader
+          }
+        });
+
+        response.cookies.set("sessionCartId", sessionCartId);
+
+        return response;
+      } else {
+        return true;
+      }
     }
   }
 } satisfies NextAuthConfig;

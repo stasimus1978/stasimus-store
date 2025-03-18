@@ -13,6 +13,7 @@ interface ErrorProps {
 export default function GlobalError({ error }: ErrorProps) {
   useEffect(() => {
     handleError(error);
+    // Sentry.captureException(error);
   }, [error]);
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">

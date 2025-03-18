@@ -17,6 +17,10 @@ type Props = {
 };
 
 const SignInPage = async (props: Props) => {
+  // if (Math.random() < 0.5) {
+  //   throw new Error("Random error");
+  // }
+
   const { callbackUrl } = await props.searchParams;
 
   const session = await auth();

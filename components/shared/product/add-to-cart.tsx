@@ -30,6 +30,7 @@ const AddToCart = ({ cart, item }: Props) => {
             onClick: () => router.push("/cart")
           }
         });
+        return;
       }
     });
   };
@@ -41,6 +42,7 @@ const AddToCart = ({ cart, item }: Props) => {
       if (removeCart.success) {
         toast.success(`🛒 ${removeCart.message}`);
       }
+      return;
     });
   };
 

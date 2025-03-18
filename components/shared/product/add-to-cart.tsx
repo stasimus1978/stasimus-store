@@ -16,7 +16,7 @@ const AddToCart = ({ item }: Props) => {
     const addCart = await addItemToCart(item);
 
     if (addCart.success) {
-      toast(`🛒 ${item.name} added to the cart`, {
+      toast(`🛒 ${addCart.message}`, {
         action: {
           label: "Go to Cart",
           onClick: () => router.push("/cart")
